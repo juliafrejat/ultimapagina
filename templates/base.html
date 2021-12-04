@@ -1,0 +1,41 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        {% block title %}{% endblock %}
+    </title>
+</head>
+
+<body>
+    <header id="main-header">
+        <a href="{% url 'index' %}" id="logo">
+            <img src="{% static 'logo.png' %}" alt="logo">
+            <h1>Última Página</h1>
+        </a>
+        <nav id="main-nav">
+            <ul>
+                <li><a href="{% url 'index' %}">Início</a></li>
+                <li><a href="{% url 'about' %}">Sobre</a></li>
+                <li><a href="{% url 'posts' %}">Resenhas</a></li>
+            </ul>
+        </nav>
+
+    </header>
+    <main id="main-container">
+        {% block content %}
+        {% endblock content %}
+    </main>
+    <footer id="main-footer">
+        <p>
+            <small>© Copyright 2021</small>
+        </p>
+    </footer>
+</body>
+
+</html>
