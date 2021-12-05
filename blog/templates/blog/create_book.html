@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+Adicionar Livro
+{% endblock title %}
+
+{% block content %}
+<h2>Adicionar Livro</h2>
+
+<form method="POST" action="{% url 'blog:create_book' %}">
+    {% csrf_token %}
+    <p>
+        <label for="id_name">Nome:</label>
+        <input type="text" name="name" id="id_name" />
+    </p>
+    <p>
+        <label for="id_author">Autor:</label>
+        <input type="text" name="author" id="id_author" />
+    </p>
+    <p>
+        <label for="id_cover_url">URL da Capa:</label>
+        <input type="url" name="cover_url" id="id_cover_url" />
+    </p>
+    <p>
+        <label for="id_is_book_club">Clube do Livro:</label>
+        <input type="checkbox" name="is_book_club" id="id_is_book_club" />
+    </p>
+    <button type="submit">Criar</button>
+</form>
+
+
+{% endblock content %}
