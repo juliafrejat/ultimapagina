@@ -6,7 +6,8 @@ from django.utils.timezone import now
 class Book(models.Model):
     name = models.CharField(max_length=255)
     author = models.CharField(max_length=255)
-    poster_url = models.URLField(max_length=200, null=True)
+    cover_url = models.URLField(max_length=200, null=True)
+    is_book_club = models.BooleanField(default=False)
 
     def __str__(self):
         return f'{self.name} ({self.author})'
