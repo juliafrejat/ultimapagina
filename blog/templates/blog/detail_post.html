@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+{{ post.title }}
+{% endblock title %}
+
+{% block content %}
+<h2>{{ post.title }}</h2>
+
+<section class="post">
+    <img id="book_cover" src="{{ post.book.cover_url }}" alt="Capa do livro {{ post.book.name }}">
+    <h3>{{ post.book.name }} ({{ post.book.author }})</h3>
+    <small>{{ post.date|date:"d/m/Y" }}</small>
+    {{ post.text|safe|escape }}
+    <strong class="rating">Nota: {{ post.rating }}</strong>
+</section>
+
+<div id="buttons">
+    <a id="button" href="{% url 'blog:update' post.id %}">Editar</a>
+    <a id="button" href="{% url 'blog:delete' post.id %}">Apagar</a>
+</div>
+
+{% endblock content %}

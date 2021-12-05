@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+Livros
+{% endblock title %}
+
+{% block content %}
+<h2>Livros</h2>
+
+{% if book_list %}
+<section id="list">
+    {% for book in book_list %}
+    <article id="card">
+        <div>
+            <a href="{% url 'blog:detail_book' book.id %}">
+                <img src="{{ book.cover_url }}" alt="Capa do livro {{ book.name }}">
+                <p id="card-p">{{ book.name }}</p>
+                <small id="card-small">{{ book.author }}</small>
+            </a>
+        </div>
+    </article>
+    {% endfor %}
+</section>
+{% else %}
+<p>Não foi encontrado nenhum livro.</p>
+{% endif %}
+
+<div id="buttons">
+    <a id="button" href="{% url 'blog:create_book' %}">Novo livro</a>
+</div>
+
+{% endblock content %}

@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+Resenhas
+{% endblock title %}
+
+{% block content %}
+<h2>Resenhas</h2>
+
+{% if post_list %}
+<section id="list">
+    {% for post in post_list %}
+    <article id="card">
+        <div>
+            <a href="{% url 'blog:detail_post' post.id %}">
+                <img src="{{ post.book.cover_url }}" alt="Capa do livro {{ post.book.name }}">
+                <p id="card-p">{{ post.book.name }}</p>
+                <small id="card-small">{{ post.title }}</small>
+            </a>
+        </div>
+    </article>
+    {% endfor %}
+</section>
+{% else %}
+<p>Não foi encontrada nenhuma resenha.</p>
+{% endif %}
+
+<div id="buttons">
+    <a id="button" href="{% url 'blog:create_post' %}">Nova resenha</a>
+</div>
+
+{% endblock content %}

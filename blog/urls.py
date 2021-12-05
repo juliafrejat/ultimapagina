@@ -8,4 +8,11 @@ urlpatterns = [
     path('', views.index, name='index'),
     path('about/', views.about, name='about'),
     path('books/create/', views.create_book, name='create_book'),
+    path('posts/', views.PostListView.as_view(), name='posts'),
+    path('books/', views.BookListView.as_view(), name='books'),
+    path('posts/<int:pk>/', views.PostDetailView.as_view(), name='detail_post'),
+    path('books/<int:pk>/', views.BookDetailView.as_view(), name='detail_book'),
+    path('posts/create/', views.PostCreateView.as_view(), name='create_post'),
+    path('posts/update/<int:pk>/', views.PostUpdateView.as_view(), name='update'),
+    path('posts/delete/<int:pk>/', views.PostDeleteView.as_view(), name='delete'),
 ]

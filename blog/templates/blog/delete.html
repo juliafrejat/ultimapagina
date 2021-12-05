@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+Apagar Resenha
+{% endblock title %}
+
+{% block content %}
+<h2>Apagar Resenha</h2>
+
+<form method="post">
+    {% csrf_token %}
+    <p>Você tem certeza de que quer apagar a resenha?</p>
+    <input type="submit" value="Confirm">
+</form>
+
+{% endblock content %}

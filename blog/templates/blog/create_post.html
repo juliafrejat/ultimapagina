@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+Criar Resenha
+{% endblock title %}
+
+{% block content %}
+<h2>Criar Resenha</h2>
+
+<form action="{% url 'blog:create_post' %}" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button id="button" type="submit">Criar</button>
+</form>
+
+{% endblock content %}

@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+{{ book.name }}
+{% endblock title %}
+
+{% block content %}
+<h2>{{ book.name }}</h2>
+
+<section class="post">
+    <img id="book_cover" src="{{ book.cover_url }}" alt="Capa do livro {{ book.name }}">
+    <h3>{{ book.name }} ({{ book.author }})</h3>
+</section>
+
+{% endblock content %}

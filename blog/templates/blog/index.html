@@ -9,4 +9,19 @@
 <h2>Seja bem-vindo(a)!</h2>
 <p>Neste site você encontrará resenhas de diversos livros e poderá acompanhar a minha leitura por meio do nosso clube do livro!</p>
 
+{% if index_list %}
+<hr>
+
+<section id="list">
+    {% for book in index_list %}
+    <article id="card">
+        <a href="{% url 'blog:detail_book' book.id %}">
+            <p>Clube do livro</p>
+            <img src="{{ book.cover_url }}" alt="Capa do livro {{ book.name }}">
+        </a>
+    </article>
+    {% endfor %}
+</section>
+{% endif %}
+
 {% endblock content %}
