@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+Categorias
+{% endblock title %}
+
+{% block content %}
+<h2>Categorias</h2>
+
+{% if category_list %}
+<section id="list">
+    {% for category in category_list %}
+    <article id="card">
+        <div>
+            <a href="{% url 'blog:category' category.id %}">
+                <p id="card-p">{{ category.name }}</p>
+            </a>
+        </div>
+    </article>
+    {% endfor %}
+</section>
+{% else %}
+<p id="warning">Não foi encontrada nenhuma categoria.</p>
+{% endif %}
+
+{% endblock content %}

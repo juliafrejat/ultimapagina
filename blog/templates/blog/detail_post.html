@@ -16,8 +16,18 @@
     <strong class="rating">Nota: {{ post.rating }}</strong>
 </section>
 
-<section>
-    <br>
+<section id="section">
+    <h3>Categorias</h3>
+    <div id="buttons">
+        {% if post.category_set.all %}
+        {% for category in post.category_set.all %}
+            <p><a id="category" href="{% url 'blog:category' category.id %}">{{ category.name }}</a></p>
+        {% endfor %}
+        {% endif %}
+    </div>
+</section>
+
+<section id="section">
     <h3>Comentários</h3>
 
     {% if post.comment_set.all %}
@@ -28,17 +38,18 @@
     </div>
     {% endfor %}
     {% else %}
-    <p>Ainda não existe nenhum comentário.</p>
+    <p id="warning">Ainda não existe nenhum comentário.</p>
     {% endif %}
-    <div id="buttons">
-        <a id="button" href="{% url 'blog:create_comment' post.pk %}">Comentar</a>
-    </div>
 </section>
 
+<br>
 <div id="buttons">
+    <a id="button" href="{% url 'blog:create_comment' post.pk %}">Comentar</a>
     <a id="button" href="{% url 'blog:update' post.id %}">Editar</a>
     <a id="button" href="{% url 'blog:delete' post.id %}">Apagar</a>
 </div>
+
+<p id="back"><a href="{% url 'blog:posts' %}">Voltar para resenhas</a></p>
 
 
 {% endblock content %}

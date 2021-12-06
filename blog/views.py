@@ -2,7 +2,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse, reverse_lazy
 from django.shortcuts import render, get_object_or_404
 from django.views import generic
-from .models import Post, Book, Comment
+from .models import Post, Book, Comment, Category
 from .forms import PostForm, BookForm, CommentForm
 from django.contrib.auth.decorators import login_required, permission_required
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
@@ -33,6 +33,17 @@ class BookListView(generic.ListView):
 class BookDetailView(generic.DetailView):
     model = Book
     template_name = 'blog/detail_book.html'
+
+class CategoryListView(generic.ListView):
+    model = Category
+    template_name = 'blog/categories.html'
+
+def category(request, category_id):
+    category = get_object_or_404(Category, pk=category_id)
+    context = {}
+    post_set = Post.objects.filter(category=category_id)
+    context = {"post_set": post_set, "category": category}
+    return render(request, 'blog/category.html', context)
 
 class PostCreateView(LoginRequiredMixin, PermissionRequiredMixin, generic.edit.CreateView):
     model = Post

@@ -229,7 +229,27 @@ input, select {
   justify-content: space-between;
 }
 
-@media screen and (max-width: 600px) {
+#back, #warning {
+  align-self: center;
+}
+
+#warning {
+  color: #843d01;
+  font-weight: bold;
+}
+
+#category {
+  margin: 8px;
+}
+
+#section {
+  background-color: #F8EDEB;
+  border-radius: 16px;
+  margin: 24px 0;
+  padding: 16px;
+}
+
+@media screen and (max-width: 760px) {
   header {
     flex-direction: column;
   }
@@ -254,5 +274,12 @@ input, select {
 
   #list #card {
     margin: 0 0 24px 0;
+  }
+}
+
+@media screen and (max-width: 510px) {
+  nav ul {
+    flex-wrap: wrap;
+    justify-content: center;
   }
 }

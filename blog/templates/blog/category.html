@@ -2,15 +2,18 @@
 {% load static %}
 
 {% block title %}
-Resenhas
+{{ category.name }}
 {% endblock title %}
 
 {% block content %}
-<h2>Resenhas</h2>
+<h2>{{ category.name }}</h2>
 
-{% if post_list %}
+<p>Descrição: {{ category.description }}</p>
+<br>
+
+{% if post_set %}
 <section id="list">
-    {% for post in post_list %}
+    {% for post in post_set %}
     <article id="card">
         <div>
             <a href="{% url 'blog:detail_post' post.id %}">
@@ -23,11 +26,9 @@ Resenhas
     {% endfor %}
 </section>
 {% else %}
-<p id="warning">Não foi encontrada nenhuma resenha.</p>
+<p id="warning">Não foi encontrada nenhuma resenha da categoria.</p>
 {% endif %}
 
-<div id="buttons">
-    <a id="button" href="{% url 'blog:create_post' %}">Nova resenha</a>
-</div>
+<p id="back"><a href="{% url 'blog:categories' %}">Voltar para categorias</a></p>
 
 {% endblock content %}

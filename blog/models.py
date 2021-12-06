@@ -31,3 +31,11 @@ class Comment(models.Model):
 
     def __str__(self):
         return f'"{self.text}" - {self.author}'
+
+class Category(models.Model):
+    name = models.CharField(max_length=255)
+    description = models.CharField(max_length=255)
+    posts = models.ManyToManyField(Post)
+
+    def __str__(self):
+        return f'{self.name}'
