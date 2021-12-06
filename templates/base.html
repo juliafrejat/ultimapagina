@@ -25,6 +25,11 @@
                 <li><a href="{% url 'blog:about' %}">Sobre</a></li>
                 <li><a href="{% url 'blog:posts' %}">Resenhas</a></li>
                 <li><a href="{% url 'blog:books' %}">Livros</a></li>
+                {% if user.is_authenticated %}
+                    <li><a href="{% url 'logout' %}">Sair</a></li>
+                {% else %}
+                    <li><a href="{% url 'login' %}">Entrar</a></li>
+                {% endif %}
             </ul>
         </nav>
 

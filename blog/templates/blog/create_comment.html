@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+Comentar Resenha
+{% endblock title %}
+
+{% block content %}
+<h2>Comentar Resenha</h2>
+
+<form action="{% url 'blog:create_comment' post.id %}" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <div id="buttons">
+        <button id="button" type="submit">Comentar</button>
+    </div>
+</form>
+
+<p><a href="{% url 'blog:detail_post' post.id %}">Voltar para a resenha</a></p>
+
+{% endblock content %}

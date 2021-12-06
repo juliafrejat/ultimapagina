@@ -1,5 +1,5 @@
 from django.forms import ModelForm
-from .models import Book, Post
+from .models import Book, Post, Comment
 
 
 class BookForm(ModelForm):
@@ -33,4 +33,14 @@ class PostForm(ModelForm):
             'text': 'Resenha',
             'rating': 'Nota',
             'book': 'Livro',
+        }
+
+class CommentForm(ModelForm):
+    class Meta:
+        model = Comment
+        fields = [
+            'text',
+        ]
+        labels = {
+            'text': 'Comentário',
         }

@@ -16,9 +16,29 @@
     <strong class="rating">Nota: {{ post.rating }}</strong>
 </section>
 
+<section>
+    <br>
+    <h3>Comentários</h3>
+
+    {% if post.comment_set.all %}
+    {% for comment in post.comment_set.all %}
+    <div id="comment">
+        <p><strong id="commenter">{{ comment.author }}</strong>   {{ comment.text }}</p>
+        <small>{{ comment.date|date:"d/m/Y" }}</small>
+    </div>
+    {% endfor %}
+    {% else %}
+    <p>Ainda não existe nenhum comentário.</p>
+    {% endif %}
+    <div id="buttons">
+        <a id="button" href="{% url 'blog:create_comment' post.pk %}">Comentar</a>
+    </div>
+</section>
+
 <div id="buttons">
     <a id="button" href="{% url 'blog:update' post.id %}">Editar</a>
     <a id="button" href="{% url 'blog:delete' post.id %}">Apagar</a>
 </div>
+
 
 {% endblock content %}
